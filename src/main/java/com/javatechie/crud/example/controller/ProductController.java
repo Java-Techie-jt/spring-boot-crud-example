@@ -16,16 +16,12 @@ public class ProductController {
 	public ProductController(ProductService service) {
 		this.service = service;
 	}
-	
-	@RequestMapping(method = RequestMethod.POST,path = "/addProduct" )
+
+
+	@PostMapping("/addProduct")
 	public Product addProduct(@RequestBody Product product) {
 		return service.saveProduct(product);
 	}
-
-	/*@PostMapping("/addProduct")
-	public Product addProduct(@RequestBody Product product) {
-		return service.saveProduct(product);
-	}*/
 
 	@PostMapping("/addProducts")
 	public List<Product> addProducts(@RequestBody List<Product> products) {
