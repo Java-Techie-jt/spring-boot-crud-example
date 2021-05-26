@@ -31,6 +31,9 @@ public class ProductService {
     public Product getProductByName(String name) {
         return repository.findByName(name);
     }
+    public List<Product> getProductsInOrder() {
+        return repository.findAllByOrderByNameAsc();
+    }
 
     public String deleteProduct(int id) {
         repository.deleteById(id);
