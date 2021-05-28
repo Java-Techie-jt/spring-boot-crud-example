@@ -11,12 +11,11 @@ import java.util.List;
 public class ProductController {
 
 	private ProductService service;
-
+	
 	@Autowired
 	public ProductController(ProductService service) {
 		this.service = service;
 	}
-
 
 	@PostMapping("/addProduct")
 	public Product addProduct(@RequestBody Product product) {
@@ -42,7 +41,7 @@ public class ProductController {
 	public Product findProductByName(@PathVariable String name) {
 		return service.getProductByName(name);
 	}
-	
+
 	@GetMapping("/productInOrder")
 	public List<Product> findProductsInOrder() {
 		return service.getProductsInOrder();
@@ -57,4 +56,11 @@ public class ProductController {
 	public String deleteProduct(@PathVariable int id) {
 		return service.deleteProduct(id);
 	}
+	
+	@GetMapping("/expiredProducts")
+	public List<Product> expiredProducts(){
+		
+		return service.findAllExpiredProduct();
+	}
+	
 }
